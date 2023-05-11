@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const { createCard } = require('../src/card');
+const {createCard, evaluateGuess, createDeck} = require('../src/card');
 
 describe('card', function() {
   it('should be a function', function() {
@@ -16,4 +16,20 @@ describe('card', function() {
     expect(card.answers).to.deep.equal(['object', 'array', 'function']);
     expect(card.correctAnswer).to.equal('object');
   });  
+  
+  it('should evaluate if a guess is correct or incorrect', function() {
+    expect(evaluateGuess('object', 'object')).to.equal('correct!');
+    expect(evaluateGuess('array', 'object')).to.equal('incorrect!');
+  })
 });
+
+describe('deck', function() {
+  it('should create an array of card objects', function() {
+    const card1 = createCard(1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
+    const card2 = createCard(14, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
+    const card3 = createCard(12, 'What is Travis\'s middle name?', ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
+    const deck = createDeck([card1, card2, card3]);
+
+    expect(deck).to.deep.equal([card1, card2, card3]);
+  })
+})

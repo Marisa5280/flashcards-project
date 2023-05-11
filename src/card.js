@@ -4,4 +4,20 @@ const createCard = (id, question, answers, correctAnswer) => ({
   answers,
   correctAnswer
 });
-module.exports = {createCard};
+
+const evaluateGuess = (guess, correctAnswer) => {
+  if (guess === correctAnswer){
+    return 'correct!';
+  } 
+  return 'incorrect!';
+}
+
+const createDeck = (cards) => {
+  let deck = cards; 
+  return deck
+}
+module.exports = {
+  createCard,
+  evaluateGuess,
+  createDeck
+};
