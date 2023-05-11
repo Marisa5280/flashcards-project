@@ -1,3 +1,8 @@
+const createDeck = (cards) => {
+  let deck = cards; 
+  return deck
+};
+
 const createCard = (id, question, answers, correctAnswer) => ({
   id,
   question,
@@ -5,26 +10,22 @@ const createCard = (id, question, answers, correctAnswer) => ({
   correctAnswer
 });
 
+const createRound = (deck) => 
+  ({
+    deck: deck,
+    currentCard: deck[0],
+    turns: 0,
+    incorrectGuesses: []
+  })
+
 const evaluateGuess = (guess, correctAnswer) => {
   if (guess === correctAnswer){
     return 'correct!';
   } 
+  
   return 'incorrect!';
 }
 
-const createDeck = (cards) => {
-  let deck = cards; 
-  return deck
-}
-
-const createRound = (deck) => {
-  const round = {};
-  round.deck = deck;
-  round.currentCard = deck[0];
-  round.turns = 0
-  // console.log(round)
-  return round
-}
 module.exports = {
   createCard,
   evaluateGuess,
