@@ -16,8 +16,16 @@ const createDeck = (cards) => {
   let deck = cards; 
   return deck
 }
+
+const createRound = (deck) => {
+  const round = {};
+  round.deck = deck
+  console.log(round)
+  return round
+}
 module.exports = {
   createCard,
   evaluateGuess,
-  createDeck
+  createDeck,
+  createRound
 };
