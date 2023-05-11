@@ -21,15 +21,21 @@ const createRound = (deck) =>
 const evaluateGuess = (guess, correctAnswer) => {
   if (guess === correctAnswer){
     return 'correct!';
-  } 
-  
+  } else {
   return 'incorrect!';
+  }
 }
 
 const takeTurn = (guess, round) => {
+  console.log('guess', guess);
   round.turns += 1;
-  round.currentCard = round.deck[round.turns]
-}
+  round.currentCard = round.deck[round.turns];
+  evaluateGuess(guess, round.currentCard.correctAnswer);
+  if (evaluateGuess(guess, round.currentCard.correctAnswer) === 'incorrect!'){
+    round.incorrectGuesses.push(guess)
+  }
+ return round
+} 
 module.exports = {
   createCard,
   evaluateGuess,

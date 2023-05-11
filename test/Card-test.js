@@ -68,12 +68,18 @@ describe('round', function() {
       expect(round.turns).to.equal(0)
       takeTurn('pug', round)
       expect(round.turns).to.equal(1)
-    })
+    });
+
     it('should assign the next card in the deck as the currentCard', function(){
       expect(round.currentCard).to.deep.equal(deck[0])
       takeTurn('pug', round)
       expect(round.currentCard).to.deep.equal(deck[1])
+    });
+
+    it('should evaluate the guess', function() {
+      expect(round.incorrectGuesses.length).to.deep.equal(0);
+      takeTurn('pug', round);
+      expect(round.incorrectGuesses.length).to.deep.equal(1);
     })
-    
   })
 })
