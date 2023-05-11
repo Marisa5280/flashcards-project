@@ -26,9 +26,14 @@ const evaluateGuess = (guess, correctAnswer) => {
   return 'incorrect!';
 }
 
+const takeTurn = (guess, round) => {
+  round.turns += 1;
+  round.currentCard = round.deck[round.turns]
+}
 module.exports = {
   createCard,
   evaluateGuess,
   createDeck,
-  createRound
+  createRound,
+  takeTurn
 };

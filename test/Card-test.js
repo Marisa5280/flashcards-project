@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const {createCard, evaluateGuess, createDeck, createRound} = require('../src/card');
+const {createCard, evaluateGuess, createDeck, createRound, takeTurn} = require('../src/card');
 
 describe('card', function() {
   it('should be a function', function() {
@@ -61,5 +61,19 @@ describe('round', function() {
 
   it ('should store incorrect guessed cards', function() {
     expect (round.incorrectGuesses).to.deep.equal([])
+  })
+
+  describe ('takeTurn', function() {
+    it('should update the turns count', function() {
+      expect(round.turns).to.equal(0)
+      takeTurn('pug', round)
+      expect(round.turns).to.equal(1)
+    })
+    it('should assign the next card in the deck as the currentCard', function(){
+      expect(round.currentCard).to.deep.equal(deck[0])
+      takeTurn('pug', round)
+      expect(round.currentCard).to.deep.equal(deck[1])
+    })
+    
   })
 })
