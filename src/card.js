@@ -19,8 +19,10 @@ const createDeck = (cards) => {
 
 const createRound = (deck) => {
   const round = {};
-  round.deck = deck
-  console.log(round)
+  round.deck = deck;
+  round.currentCard = deck[0];
+  round.turns = 0
+  // console.log(round)
   return round
 }
 module.exports = {
