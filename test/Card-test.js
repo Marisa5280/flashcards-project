@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const {createCard, evaluateGuess, createDeck, createRound, takeTurn} = require('../src/card');
+const {createCard, evaluateGuess, createDeck, createRound, takeTurn, calculatePercentCorrect, endRound} = require('../src/card');
 
 describe('card', function() {
   it('should be a function', function() {
@@ -80,6 +80,24 @@ describe('round', function() {
       expect(round.incorrectGuesses.length).to.deep.equal(0);
       takeTurn('pug', round);
       expect(round.incorrectGuesses.length).to.deep.equal(1);
+    })
+
+    it('should calculate the percent of correct guesses', function() {
+      takeTurn('sea otter', round);
+      takeTurn('spleen', round);
+      takeTurn('watching Netflix', round);
+      const percentCorrect = calculatePercentCorrect(round);
+      expect(percentCorrect).to.equal('33.33');
+    })
+  })
+
+  describe('endRound', function() {
+    it('should show the score', function() {
+      takeTurn('sea otter', round);
+      takeTurn('spleen', round);
+      takeTurn('watching Netflix', round);
+      let roundOverMessage = endRound(round)
+      expect(roundOverMessage).to.equal(`** Round over! ** You answered 33.33% of the questions correctly!`)
     })
   })
 })
