@@ -3,6 +3,9 @@ const createDeck = (cards) => {
   return deck
 };
 
+const countCards = (deck) => deck.length;
+
+
 const createCard = (id, question, answers, correctAnswer) => ({
   id,
   question,
@@ -45,7 +48,6 @@ const calculatePercentCorrect = (round) => {
 const endRound = (round) => {
   const percentCorrect = calculatePercentCorrect(round);
   const roundOverMessage = `** Round over! ** You answered ${percentCorrect}% of the questions correctly!`
-// console.log('correct', roundOverMessage)
   return roundOverMessage
 }
 
@@ -54,6 +56,7 @@ module.exports = {
   evaluateGuess,
   createDeck,
   createRound,
+  countCards,
   takeTurn,
   calculatePercentCorrect,
   endRound
