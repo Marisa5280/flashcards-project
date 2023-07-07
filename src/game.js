@@ -7,7 +7,6 @@ const util = require('./util');
 const start = () => {
   const cards = prototypeQuestions.map((card) => createCard(card.id, card.question, card.answers, card.correctAnswer))
   const deck = createDeck(cards);
-  console.log('deck', deck);
   const round = createRound(deck);
   printMessage(deck);
   printQuestion(round);
