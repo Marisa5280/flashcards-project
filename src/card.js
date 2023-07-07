@@ -30,7 +30,6 @@ const evaluateGuess = (guess, correctAnswer) => {
 }
 
 const takeTurn = (guess, round) => {
-  // console.log('current', round.currentCard)
   if (evaluateGuess(guess, round.currentCard.correctAnswer) === 'incorrect!'){
     round.incorrectGuesses.push(guess)
   }
